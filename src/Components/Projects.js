@@ -73,9 +73,12 @@ function Projects () {
               Projects
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              {projectItem(movie, 'Topher Emby', reroute('/TopherEmby') )}
+              {/* {projectItem(movie, 'Topher Emby', reroute('/TopherEmby') )}
               {projectItem(commandLine, 'OnlyKyles', reroute('/OnlyKyles') )}
-              {projectItem(workout, 'Flat & Iron Abs', reroute('/FlatIronAbs') )}
+              {projectItem(workout, 'Flat & Iron Abs', reroute('/FlatIronAbs') )} */}
+              {projectItem(movie, 'Topher Emby')}
+              {projectItem(commandLine, 'OnlyKyles')}
+              {projectItem(workout, 'Flat & Iron Abs')}
             </Box>
         </Container>
     );
