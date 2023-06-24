@@ -8,70 +8,29 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const theme = createTheme({
     palette: {
       primary: {
-        main: '#2e7d32',
+        main: '#3D3D3D',
       },
       secondary: {
-        main: '#ff3d00',
+        main: '#282828',
       },
     },
-    components: {
-      MuiTypography: {
-        styleOverrides: {
-          root: {
-            fontSize: 38,
-            fontWeight: 'bold',
-            marginBottom: 16,
-            display: 'flex',
-            fontFamily: 'Arial'
-          },
-        },
-        variants:[
-          {
-            props: {variant: 'secondary'},
-            style: {
-              fontSize: 24,
-            }
-          }
-        ] 
+    typography: {
+      h1: {
+        fontSize: '4rem',
+        color: '#E1E1E1',
       },
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            margin: '16px 0',
-            fontWeight: 'bold',
-            '&.MuiButton-primary': {
-              color: 'white',
-              background: '#2e7d32',
-              '&:hover': {
-                background: '#1b5e20',
-              },
-            },
-          },
-        },
+      h2: {
+        fontSize: '3rem',
+        color: '#E1E1E1',
       },
-      MuiTextField: {
-        styleOverrides: {
-          root: {
-            margin: '16px 0',
-          },
-        },
+      h3: {
+        fontSize: '2rem',
+        color: '#E1E1E1',
       },
-      MuiChip: {
-        styleOverrides: {
-          root: {
-            margin: '4px',
-          },
-        },
-      },
-      MuiListItem: {
-        styleOverrides: {
-          root: {
-            '&:hover': {
-              backgroundColor: '#fafafa',
-            },
-          },
-        },
-      },
+      h4: {
+        fontSize: '1.5rem',
+        color: '#E1E1E1',
+      }    
     },
   });
 root.render(

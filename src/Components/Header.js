@@ -1,75 +1,157 @@
-import React ,{useState} from 'react';
-import { Link} from 'react-scroll';
-import Image from '../Assets/Portrait.jpg';
-import Resume from '../Assets/Resume.pdf'
+import { useState } from 'react';
+import AppBar from '@mui/material/AppBar';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import MenuIcon from '@mui/icons-material/Menu';
+import Button from '@mui/material/Button';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import { Typography } from '@mui/material';
+import { Link as ScrollLink } from 'react-scroll';
+import { useMediaQuery } from '@mui/material';
 
-function Header() {
-  const [isNavExpanded, setIsNavExpanded] = useState(false);
-  console.log(isNavExpanded)
-  const openPdf = () => {
-    window.open(Resume, '_blank');
-  }
-  return (
-      <nav className="nav">
-      {/* <div className='link-container'> */}
-      <button
-          className="hamburger"
-          onClick={() => {
-            setIsNavExpanded(!isNavExpanded);
+import resume_pdf from '../Assets/Resume.pdf';
+import github_img from '../Assets/github.png';
+import linkedin_img from '../Assets/linkedin.png';
+
+const navLink = (toId, text) => {
+    return (
+      <ScrollLink
+        to={toId}
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={500}
+        onClick={() => {
+          console.log(document.getElementById(toId))
+          if (window.location.pathname !== '/') {
+            window.location.href = '/';
+          }
+        }}        
+      >
+        <Typography
+          variant="h6"
+          sx={{
+            mx: 2,
+            color: '#e1e1e1',
+            textDecoration: 'none',
+            cursor: 'pointer'
           }}
         >
-          {/* icon from Heroicons.com */} 
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="white">
-            <path
-              fillRule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-              clipRule="evenodd"/>
-          </svg>
-        </button>
-        {/* <div  className={isNavExpanded ? "link-container expanded" : "link-container"}> */}
-        <div  className= "link-container">
-        <ul>
-          <li>
-            <Link activeClass="active" to="About" spy={true} smooth={true} offset={-100} duration={500} >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link activeClass="active" to="Projects" spy={true} smooth={true} offset={-145} duration={500} >
-              Projects
-            </Link>
-          </li>
-          {/* <li>
-            <Link activeClass="active" to="Blogs" spy={true} smooth={true} offset={-145} duration={500} >
-              Blogs 
-            </Link>
-          </li> */}
-          <li>
-            <Link activeClass="active" to="Contact" spy={true} smooth={true} offset={-145} duration={500} >
-              Contact 
-            </Link>
-          </li>
-          <li>
-            <Link onClick={openPdf}>Resume</Link>
-          </li>
-        </ul>
-      </div>
-      <div className='info-container'>
-        <h1>Welcome to my website</h1>
-        <p>Here you can learn all about me and my work.</p>
-      </div>
-      <div className="portrait-container">
-        <img
-          className="portrait-img"
-          src={Image}
-          alt="Portrait"
-        />
-      </div>
-      </nav>
+          {text}
+        </Typography>
+      </ScrollLink>
+    );
+};
+
+const links = () => {
+  return (
+    <>  
+      {navLink('About', 'ABOUT')}
+      {navLink('Skills', 'SKILLS')}
+      {navLink('Projects', 'PROJECTS')}
+      {navLink('Contact', 'CONTACT')}
+      
+      <Typography
+        variant="h6"
+        component="a"
+        href={resume_pdf}
+        target="_blank"
+        sx={{
+          mx: 2,
+          color: '#e1e1e1',
+          textDecoration: 'none',
+        }}
+      >
+        RESUME
+      </Typography>
+
+      <Link href="https://github.com/Topher2014" target="_blank">
+        <Box component="img" src={github_img} alt="" sx={{ mx: 2, height: '2rem' }} />
+      </Link>
+
+      <Link href="https://www.linkedin.com/in/topherludlow" target="_blank">
+        <Box component="img" src={linkedin_img} alt="" sx={{ mx: 2, height: '2rem' }} />
+      </Link>
+    </>
+  );
+};
+
+
+function Header() {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down(1080));
+  
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const toggleDrawer = (event) => {
+    if (
+      event &&
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+      ) { return; }
+      setIsDrawerOpen(!isDrawerOpen);
+    };
+    
+  const renderMobileMenu = () => {
+    return (
+      <>
+        <Button onClick={() => toggleDrawer()}>
+          <MenuIcon />
+        </Button>
+        <SwipeableDrawer
+          open={isDrawerOpen}
+          onOpen={toggleDrawer}
+          onClose={toggleDrawer}
+          >
+          {links()}
+        </SwipeableDrawer>
+      </>
+    );
+  };
+  
+  const renderDesktopMenu = () => {
+    return (
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        {links()}
+      </Box>
+    );
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <AppBar
+
+      sx={{
+        height: '4rem',
+        backgroundColor: '#000000',
+        py: '.9rem',
+      }}
+    >
+      <Container
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography variant="h6" noWrap    
+          style={{
+        cursor: 'pointer',
+        }}
+        onClick={scrollToTop}
+        >
+            TOPHER LUDLOW
+          </Typography>
+        </Box>
+        {isMobile ? renderMobileMenu() : renderDesktopMenu()}
+      </Container>
+    </AppBar>
   );
 }
 

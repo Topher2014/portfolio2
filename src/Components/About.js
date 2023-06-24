@@ -2,82 +2,136 @@ import Image from '../Assets/Portrait2.jpg'
 import book1 from '../Assets/chapter-house-dune.jpg'
 import book2 from '../Assets/fingerprint_of_gods.jpg'
 import book3 from '../Assets/economics.jpg'
-import python_img from '../Assets/technologies/python.png'
-import flask_img from '../Assets/technologies/flask.png'
-import javascript_img from '../Assets/technologies/javascript.png'
-import react_img from '../Assets/technologies/react.png'
-import html_img from '../Assets/technologies/html.png'
-import css_img from '../Assets/technologies/css.png'
-import mui_img from '../Assets/technologies/mui.png'
-import numpy_img from '../Assets/technologies/numpy.png'
-import pandas_img from '../Assets/technologies/pandas.png'
-import github_img from '../Assets/technologies/github2.png'
-import node_img from '../Assets/technologies/node.png'
-import render_img from '../Assets/technologies/render.png'
+
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 const books = [book1, book2, book3]
 
-function About() {
-    console.log(books)
+const gridItem = (name, path) => {
     return (
-        <div id='About' className="section" >
-        {/* <div id='About' > */}
-            <div className='about-section'>
-                <h2> Topher Ludlow </h2>
-                <p> Software engineer experienced in Python with Flask and JavaScript based programming. Developed skills in communication, professionalism, and customer service through experience with the US Army National Guard and State of California.  Eager to apply expertise somewhere demanding and challenging where I can grow my skills. I hope to also contribute my capabilities to non-profits and open source projects. </p>
-                    <img className='about-img' src={Image} alt='bleg'></img>
-            </div>
-            <div className='skills-section'>
-                    <h2> Skills </h2>
-                <div className='row'>
-                    <div className='column'>
-                        <img src={python_img} alt='python' ></img>
-                    </div>
-                    <div className='column'>
-                        <img src={flask_img} alt='flask' ></img>
-                    </div>
-                    <div className='column'>
-                        <img src={javascript_img} alt='javascript' ></img>
-                    </div>
-                    <div className='column'>
-                        <img src={react_img} alt='react' ></img>
-                    </div>
-                    <div className='column'>
-                        <img src={html_img} alt='html' ></img>
-                    </div>
-                    <div className='column'>
-                        <img src={css_img} alt='css' ></img>
-                    </div>
-                    <div className='column'>
-                        <img src={mui_img} alt='mui' ></img>
-                    </div>
-                    <div className='column'>
-                        <img src={numpy_img} alt='numpy' ></img>
-                    </div>
-                    <div className='column'>
-                        <img src={pandas_img} alt='pandas' ></img>
-                    </div>
-                    <div className='column'>
-                        <img src={github_img} alt='github' ></img>
-                    </div>
-                    <div className='column'>
-                        <img src={node_img} alt='node' ></img>
-                    </div>
-                    <div className='column'>
-                        <img src={render_img} alt='render' ></img>
-                    </div>
-                </div>
-            </div>
-            <div className='books-section'>
-                <h2> Books I'm reading </h2>
-                <div className='books'>
-                    {books.map((book, index) => {
-                        return (
-                                <img key={index} src={book} alt={book}></img>
-                        )
-                    })}
-                </div>
-            </div>
-        </div>
+        <Container
+          sx={{
+            width: '15rem',
+            height: '8rem',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            bgcolor: '#292929',
+            m: 'auto',
+            p: 1,
+            borderRadius: '10px',
+            transition: '0.5s',
+            '&:hover': { transform: 'scale(1.05)' }
+          }}
+        >
+          <Box
+            component='img'
+            src={path}
+            alt={`${name} logo`}
+            height='5rem'
+            mr={2}
+          />
+          <Typography color='#e1e1e1'>{name}</Typography>
+        </Container>
+    );
+};
+
+
+
+function About() {
+    // console.log(books)
+    return (
+        <>
+        <Container 
+        id='intro'
+        maxWidth='none'
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-evenly',
+          mt: '25vh',
+          mb: '25vh',
+          width: '75%',
+        }}
+        >
+           <Box
+            component='img'
+            src={Image}
+            alt='headshot of Kyle Schneider'
+            sx={{
+              height: '35%',
+              width: '35%',
+              borderRadius: '10px',
+            }}
+          />
+          <Box textAlign='center'>
+            <Typography variant='h1'>Topher Ludlow</Typography>
+            <Typography variant='h2'>Software Developer</Typography>
+            <Typography>
+              I am a software developer with a passion for learning and creating. 
+              <br />
+              I use my background in mathematics and science to solve problems and build applications.
+            </Typography>
+          </Box>
+        </Container>
+
+<Container
+id='About'
+maxWidth='none'
+sx={{ 
+  mx: 'auto', 
+  mb: '25vh',
+  width: '75%',
+}}
+>
+  <Typography variant='h2' textAlign='center' >About</Typography>
+  <Box>
+      <Typography color='#e1e1e1'>
+          As a dedicated and self-motivated software developer and researcher, I am constantly seeking out new challenges that allow me to grow and learn. With a strong background in mathematics and science, I am passionate about using technology to solve complex problems and make a positive impact in the world. I thrive on innovation and creativity, and I am committed to pushing the boundaries of what is possible through my work.
+
+          Whether I am conducting research, developing software solutions, or exploring new fields of knowledge, I am always seeking out opportunities to expand my skills and expertise. As someone who thrives on challenge, I am constantly pushing myself to learn and grow in my work. With a keen eye for detail and a results-driven mindset, I am able to deliver exceptional work that meets the needs of my clients and collaborators.
+
+          As a lifelong learner, I am constantly seeking out new ideas and experiences, and I am eager to connect with others who share my passion for intellectual curiosity and personal growth. If you're looking for a dedicated and driven software developer and researcher who is always up for a challenge, then look no further than me.
+      </Typography>
+  </Box>
+  <Box >
+      {/* Books */}
+      <Typography 
+        variant='h3' 
+        textAlign='center'
+        sx={{ mt: '5vh' }}
+      >
+        Books I'm Reading
+      </Typography>
+      <Box 
+        display='flex' 
+        flexDirection='row' 
+        justifyContent='center'  
+        alignItems='center'
+      >
+          {books.map((book, index) => {
+              return (
+                  <Box 
+                    key={index}
+                    component='img'   
+                    src={book} 
+                    alt='' 
+                    sx={{
+                      height: '18vw',
+                      width: '12vw',
+                      mx: 2
+                    }}
+                  />
+              );
+          })}
+      </Box>
+  </Box>
+</Container>
+        </>
+
+          
     )
 }
 export default About

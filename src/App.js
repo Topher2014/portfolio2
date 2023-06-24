@@ -5,32 +5,22 @@ import Projects from './Components/Projects'
 import Header from './Components/Header'
 import About from './Components/About'
 import HireMe from './Components/HireMe'
+import Home from './Components/Home'
+import TopherEmby from './Components/TopherEmby'
 import { Typography, Container, Box } from '@mui/material'
+import Skills from './Components/Skills'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
-
     return (
-        <Box>
-        {/* <Container>
-            <Typography>bleg</Typography>
-        </Container> */}
-
-        <div>
-            <div className='header' id='Header'>
-            <Header />
-            </div>
-            <div className='section' id='About'>
-            <About />
-            </div>
-            <div className='section' id='Projects'>
-            <Projects />
-            </div>
-            <div className='section' id='Contact'>
-            <Contact />
-            </div>
-        </div>
-        </Box>
-
+        <>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/TopherEmby' element={<TopherEmby />} />
+            </Routes>
+        </BrowserRouter>
+        </>
     )
 }
 
