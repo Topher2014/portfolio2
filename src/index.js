@@ -17,19 +17,19 @@ const theme = createTheme({
     typography: {
       h1: {
         fontSize: '4rem',
-        color: '#E1E1E1',
+        color: '#000000',
       },
       h2: {
         fontSize: '3rem',
-        color: '#E1E1E1',
+        color: '#000000',
       },
       h3: {
         fontSize: '2rem',
-        color: '#E1E1E1',
+        color: '#000000',
       },
       h4: {
         fontSize: '1.5rem',
-        color: '#E1E1E1',
+        color: '#000000',
       }    
     },
   });

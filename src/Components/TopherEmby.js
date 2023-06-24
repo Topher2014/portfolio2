@@ -1,6 +1,5 @@
 import ProjectCard from './ProjectCard';
 
-import Logo from '../Assets/TopherEmbyLogo.png';
 
 function TopherEmby() {
     return (
@@ -13,7 +12,7 @@ function TopherEmby() {
             ['Demo', 'https://youtu.be/43IuuSmvnHs'],
             ['Live Site', 'https://www.chess.kvschneider.com/login']
           ]}
-          image={Logo}
+          // image={Logo}
           notes={[
             'Created chess game logic from scratch using Python',
             'Designed a clean and modern website using React with Material UI',

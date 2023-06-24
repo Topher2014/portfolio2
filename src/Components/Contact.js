@@ -4,10 +4,7 @@ import Container from '@mui/material/Container';
 
 function Contact() {
     return (
-        <Container 
-          id='contact'
-          
-        >
+        <Container >
           <Typography variant='h2' textAlign='center'>
             Contact Me
           </Typography>

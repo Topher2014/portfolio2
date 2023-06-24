@@ -4,8 +4,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import Logo from '../Assets/TopherEmbyLogo.png';
-import TopherEmby from './TopherEmby';
+import movie from '../Assets/movie.png'
+import workout from '../Assets/workout.png'
+import commandLine from '../Assets/commandLine.png'
 
 const BoxWithHover = styled(Box)`
   transition: .5s;
@@ -72,8 +73,9 @@ function Projects () {
               Projects
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              {/* {projectItem(Logo, 'Topher Emby', reroute('/TopherEmby'))} */}
-              {projectItem(Logo, 'Topher Emby', reroute('/TopherEmby') )}
+              {projectItem(movie, 'Topher Emby', reroute('/TopherEmby') )}
+              {projectItem(commandLine, 'OnlyKyles', reroute('/OnlyKyles') )}
+              {projectItem(workout, 'Flat & Iron Abs', reroute('/FlatIronAbs') )}
             </Box>
         </Container>
     );
